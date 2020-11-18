@@ -18,12 +18,12 @@ end
 
 describe 'form page' do
   it 'form renders with the new action' do
-    visit new_coupon_path
+    visit new_coupons_path
     expect(page).to have_content("Coupon Form")
   end
 
   it 'new form submits content and renders form content' do
-    visit new_coupon_path
+    visit new_coupons_path
 
     fill_in 'coupon[coupon_code]', with: "YAYFREE"
     fill_in 'coupon[store]', with: "Hobby Lobby"
@@ -34,7 +34,7 @@ describe 'form page' do
   end
 
   it 'creates a record in the database' do
-    visit new_coupon_path
+    visit new_coupons_path
 
     fill_in 'coupon[coupon_code]', with: "FREEITEM"
     fill_in 'coupon[store]', with: "Quip"
@@ -51,7 +51,7 @@ describe 'Show page' do
   end
 
   it 'renders properly' do
-    visit coupon_path(@coupon)
+    visit coupons_path(@coupon)
     expect(page.status_code).to eq(200)
   end
 
@@ -61,7 +61,7 @@ describe 'Show page' do
   end
 
   it 'renders the store name in a h1 tag' do
-    visit coupon_path(@coupon)
+    visit coupons_path(@coupon)
     expect(page).to have_css("h1", text: "Chipotle")
   end
 end
